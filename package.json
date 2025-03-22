@@ -1,7 +1,7 @@
 {
-  "name": "takcomsinvestment-backend",
-  "version": "1.0.0",
-  "description": "",
+  "name": "your-project-name",
+  "version": "your-project-version",
+  "description": "your-project-description",
   "main": "app.js",
   "type": "module",
   "scripts": {

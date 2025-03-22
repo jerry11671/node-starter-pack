@@ -8,6 +8,7 @@ import cors from "cors"
 import { StatusCodes } from "http-status-codes"
 
 import express from "express";
+import connectDB  from "./db/connect.js"
 
 const app = express()
 
@@ -21,12 +22,21 @@ app.get("/healthcheck", (req, res) => {
 app.use(express.json())
 app.use(cors())
 
-
 app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware);
 
 
-// Server setup
-app.listen(PORT, () => {
-    console.log("Server is active");
-});
+const start = async () => {
+    try {
+        await connectDB(process.env.MONGO_URI)
+        // Server setup
+        app.listen(PORT, () => {
+        console.log("Server is active");
+        })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+start();
